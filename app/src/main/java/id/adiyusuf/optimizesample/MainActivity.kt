@@ -35,6 +35,12 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import id.adiyusuf.optimizesample.screen.chart.ChartScreen
+import id.adiyusuf.optimizesample.screen.chart.bar.BarChartScreen
+import id.adiyusuf.optimizesample.screen.chart.candlestick.CandlestickChartScreen
+import id.adiyusuf.optimizesample.screen.chart.combo.ComboChartScreen
+import id.adiyusuf.optimizesample.screen.chart.line.LineChartScreen
+import id.adiyusuf.optimizesample.screen.game.SimpleGameCanvasScreen
 import id.adiyusuf.optimizesample.screen.home.HomeScreen
 import id.adiyusuf.optimizesample.screen.result.ResultScreen
 import id.adiyusuf.optimizesample.screen.result.argument.ResultArgumentScreen
@@ -105,13 +111,39 @@ class MainActivity : ComponentActivity() {
                                 HomeScreen()
                             }
 
+                            composable(route = "game") {
+                                SimpleGameCanvasScreen()
+                            }
+
                             sharingNavigation()
 
                             resultNavigation()
+
+                            chartNavigation()
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+fun NavGraphBuilder.chartNavigation() {
+    navigation(startDestination = "chart/main", route = "chart") {
+        composable(route = "chart/main") {
+            ChartScreen()
+        }
+        composable(route = "chart/bar") {
+            BarChartScreen()
+        }
+        composable(route = "chart/candlestick") {
+            CandlestickChartScreen()
+        }
+        composable(route = "chart/line") {
+            LineChartScreen()
+        }
+        composable(route = "chart/combo") {
+            ComboChartScreen()
         }
     }
 }
