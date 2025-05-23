@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import id.adiyusuf.optimizesample.AppComposition
+import id.adiyusuf.optimizesample.BasicSharingViewModel
 import id.adiyusuf.optimizesample.BasicViewModel
 import id.adiyusuf.optimizesample.screen.sharing.SharingViewModel
 
@@ -37,8 +39,13 @@ fun SharingVmScreen(
 
     val scrollState = rememberScrollState()
 
+    val basicSharingViewModel: BasicSharingViewModel = hiltViewModel(
+        viewModelStoreOwner = navController.getBackStackEntry("sharing")
+    )
+
     val text by basicViewModel.sharingActivity.collectAsStateWithLifecycle()
     val textPrevPage by sharingViewModel.sharingNextRoute.collectAsStateWithLifecycle()
+    val textNested by basicSharingViewModel.text.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -58,6 +65,19 @@ fun SharingVmScreen(
         Text("Sharing Prev Route:")
         Text(textPrevPage)
         Spacer(Modifier.height(16.dp))
+
+        Text("Sharing Navigation:")
+        Text(textNested)
+        Spacer(Modifier.height(16.dp))
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                navController.navigate("sharing/next")
+            }
+        ) {
+            Text("Next Page")
+        }
     }
 
     LaunchedEffect(Unit) {

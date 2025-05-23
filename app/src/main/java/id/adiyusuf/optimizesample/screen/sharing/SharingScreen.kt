@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import id.adiyusuf.optimizesample.AppComposition
+import id.adiyusuf.optimizesample.BasicSharingViewModel
 import id.adiyusuf.optimizesample.BasicViewModel
 
 @Composable
@@ -38,6 +39,10 @@ fun SharingScreen(
 
     val navController = AppComposition.navigation
     val scrollState = rememberScrollState()
+
+    val basicSharingViewModel: BasicSharingViewModel = hiltViewModel(
+        viewModelStoreOwner = navController.getBackStackEntry("sharing")
+    )
 
     viewModel.changeHeader("Sharing in Jetpack Compose")
     viewModel.changeDescription("tutorial sharing data antar screen, composable function.")
@@ -105,6 +110,7 @@ fun SharingScreen(
 
     LaunchedEffect(Unit) {
         basicViewModel.changeTitle("Sharing")
+        basicSharingViewModel.changeText("Sharing Ke semua yang ada di navigation sharing")
     }
 }
 
