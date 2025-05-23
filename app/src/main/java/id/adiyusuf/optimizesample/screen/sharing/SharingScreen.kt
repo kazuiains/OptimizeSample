@@ -96,6 +96,7 @@ fun SharingScreen(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
                 navController.navigate("sharing/viewmodel")
+                viewModel.changeNext("Halo guys. ini diambil dari data SharingViewModel. data diubah di composable SharingScreen (page sebelumnya) dan data di tampilkan di composable SharingVmScreen (page saat ini)")
             }
         ) {
             Text("ViewModel")
@@ -123,7 +124,6 @@ private fun Header() {
         ) {
             Text(header)
             Text(description, fontSize = 12.sp)
-
         }
         Spacer(modifier = Modifier.height(16.dp))
     }

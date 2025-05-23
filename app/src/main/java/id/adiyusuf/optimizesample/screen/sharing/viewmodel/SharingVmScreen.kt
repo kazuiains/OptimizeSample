@@ -18,20 +18,27 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import id.adiyusuf.optimizesample.AppComposition
 import id.adiyusuf.optimizesample.BasicViewModel
+import id.adiyusuf.optimizesample.screen.sharing.SharingViewModel
 
 @Composable
 fun SharingVmScreen(
     viewModel: SharingVmViewModel = hiltViewModel()
 ) {
+    val navController = AppComposition.navigation
+
     val context = LocalContext.current
     val basicViewModel: BasicViewModel = hiltViewModel(
         viewModelStoreOwner = context as ComponentActivity
     )
 
+    val sharingViewModel: SharingViewModel = hiltViewModel(viewModelStoreOwner = navController.getBackStackEntry("sharing/main"))
+
     val scrollState = rememberScrollState()
 
     val text by basicViewModel.sharingActivity.collectAsStateWithLifecycle()
+    val textPrevPage by sharingViewModel.sharingNextRoute.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -47,6 +54,10 @@ fun SharingVmScreen(
         Spacer(Modifier.height(16.dp))
 
         CurrentView()
+
+        Text("Sharing Prev Route:")
+        Text(textPrevPage)
+        Spacer(Modifier.height(16.dp))
     }
 
     LaunchedEffect(Unit) {
