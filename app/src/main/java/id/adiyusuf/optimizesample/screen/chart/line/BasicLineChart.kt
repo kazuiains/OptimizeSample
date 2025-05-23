@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.patrykandpatrick.vico.sample.compose
+package id.adiyusuf.optimizesample.screen.chart.line
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,47 +29,36 @@ import com.patrykandpatrick.vico.core.cartesian.axis.HorizontalAxis
 import com.patrykandpatrick.vico.core.cartesian.axis.VerticalAxis
 import com.patrykandpatrick.vico.core.cartesian.data.CartesianChartModelProducer
 import com.patrykandpatrick.vico.core.cartesian.data.lineSeries
+import com.patrykandpatrick.vico.sample.compose.PreviewBox
 import kotlinx.coroutines.runBlocking
 
 @Composable
-private fun JetpackComposeBasicLineChart(
-  modelProducer: CartesianChartModelProducer,
-  modifier: Modifier = Modifier,
+fun JetpackComposeBasicLineChart(
+    modelProducer: CartesianChartModelProducer,
+    modifier: Modifier = Modifier,
 ) {
-  CartesianChartHost(
-    chart =
-      rememberCartesianChart(
-        rememberLineCartesianLayer(),
-        startAxis = VerticalAxis.rememberStart(),
-        bottomAxis = HorizontalAxis.rememberBottom(),
-      ),
-    modelProducer = modelProducer,
-    modifier = modifier,
-  )
-}
-
-@Composable
-fun JetpackComposeBasicLineChart(modifier: Modifier = Modifier) {
-  val modelProducer = remember { CartesianChartModelProducer() }
-  LaunchedEffect(Unit) {
-    modelProducer.runTransaction {
-      // Learn more: https://patrykandpatrick.com/vmml6t.
-      lineSeries { series(13, 8, 7, 12, 0, 1, 15, 14, 0, 11, 6, 12, 0, 11, 12, 11) }
-    }
-  }
-  JetpackComposeBasicLineChart(modelProducer, modifier)
+    CartesianChartHost(
+        chart =
+        rememberCartesianChart(
+            rememberLineCartesianLayer(),
+            startAxis = VerticalAxis.rememberStart(),
+            bottomAxis = HorizontalAxis.rememberBottom(),
+        ),
+        modelProducer = modelProducer,
+        modifier = modifier,
+    )
 }
 
 @Composable
 @Preview
 private fun Preview() {
-  val modelProducer = remember { CartesianChartModelProducer() }
-  // Use `runBlocking` only for previews, which don’t support asynchronous execution.
-  runBlocking {
-    modelProducer.runTransaction {
-      // Learn more: https://patrykandpatrick.com/vmml6t.
-      lineSeries { series(13, 8, 7, 12, 0, 1, 15, 14, 0, 11, 6, 12, 0, 11, 12, 11) }
+    val modelProducer = remember { CartesianChartModelProducer() }
+    // Use `runBlocking` only for previews, which don’t support asynchronous execution.
+    runBlocking {
+        modelProducer.runTransaction {
+            // Learn more: https://patrykandpatrick.com/vmml6t.
+            lineSeries { series(13, 8, 7, 12, 0, 1, 15, 14, 0, 11, 6, 12, 0, 11, 12, 11) }
+        }
     }
-  }
-  PreviewBox { JetpackComposeBasicLineChart(modelProducer) }
+    PreviewBox { JetpackComposeBasicLineChart(modelProducer) }
 }
