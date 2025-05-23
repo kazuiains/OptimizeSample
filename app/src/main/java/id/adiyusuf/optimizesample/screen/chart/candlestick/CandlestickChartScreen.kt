@@ -27,8 +27,6 @@ fun CandlestickChartScreen() {
         viewModelStoreOwner = context as ComponentActivity
     )
 
-    basicViewModel.changeTitle("Candlestick")
-
     val scrollState = rememberScrollState()
 
     val modelProducer = remember { CartesianChartModelProducer() }
@@ -45,6 +43,8 @@ fun CandlestickChartScreen() {
     }
 
     LaunchedEffect(Unit) {
+        basicViewModel.changeTitle("Candlestick")
+
         modelProducer.runTransaction {
             // Learn more: https://patrykandpatrick.com/y3c4gz.
             candlestickSeries(GoldPricesX, opening, closing, low, high)

@@ -27,8 +27,6 @@ fun LineChartScreen() {
         viewModelStoreOwner = context as ComponentActivity
     )
 
-    basicViewModel.changeTitle("Line")
-
     val scrollState = rememberScrollState()
 
     val modelProducerBasic = remember { CartesianChartModelProducer() }
@@ -55,6 +53,8 @@ fun LineChartScreen() {
     }
 
     LaunchedEffect(Unit) {
+        basicViewModel.changeTitle("Line")
+
         modelProducerBasic.runTransaction {
             // Learn more: https://patrykandpatrick.com/vmml6t.
             lineSeries { series(13, 8, 7, 12, 0, 1, 15, 14, 0, 11, 6, 12, 0, 11, 12, 11) }

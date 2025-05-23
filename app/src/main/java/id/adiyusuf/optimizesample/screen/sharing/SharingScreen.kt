@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,11 +36,9 @@ fun SharingScreen(
         viewModelStoreOwner = context as ComponentActivity
     )
 
-
     val navController = AppComposition.navigation
     val scrollState = rememberScrollState()
 
-    basicViewModel.changeTitle("Sharing")
     viewModel.changeHeader("Sharing in Jetpack Compose")
     viewModel.changeDescription("tutorial sharing data antar screen, composable function.")
 
@@ -101,6 +100,10 @@ fun SharingScreen(
         ) {
             Text("ViewModel")
         }
+    }
+
+    LaunchedEffect(Unit) {
+        basicViewModel.changeTitle("Sharing")
     }
 }
 

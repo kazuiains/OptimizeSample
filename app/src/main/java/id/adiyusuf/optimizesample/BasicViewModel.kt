@@ -11,7 +11,14 @@ class BasicViewModel @Inject constructor() : ViewModel() {
     private val _appBar = MutableStateFlow("Basic")
     val appBar: StateFlow<String> = _appBar
 
+    private val _sharingActivity = MutableStateFlow("ActivitySharing")
+    val sharingActivity: StateFlow<String> = _sharingActivity
+
     fun changeTitle(value: String) {
         _appBar.value = value
+    }
+
+    fun changeActivity(value: String) {
+        _sharingActivity.value = value
     }
 }

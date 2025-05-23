@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
@@ -121,6 +122,10 @@ class MainActivity : ComponentActivity() {
 
                             chartNavigation()
                         }
+                    }
+
+                    LaunchedEffect(Unit) {
+                        viewModel.changeActivity("Halo guys. ini diambil dari data BasicViewModel. data diubah di composable MainActivity dan data ditampilkan di composable SharingVmScreen.")
                     }
                 }
             }

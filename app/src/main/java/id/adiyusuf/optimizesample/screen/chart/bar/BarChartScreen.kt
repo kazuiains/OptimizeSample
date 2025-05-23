@@ -27,8 +27,6 @@ fun BarChartScreen() {
         viewModelStoreOwner = context as ComponentActivity
     )
 
-    basicViewModel.changeTitle("Bar")
-
     val scrollState = rememberScrollState()
 
     val modelProducerBasicColumn = remember { CartesianChartModelProducer() }
@@ -62,6 +60,8 @@ fun BarChartScreen() {
     }
 
     LaunchedEffect(Unit) {
+        basicViewModel.changeTitle("Bar")
+
         modelProducerBasicColumn.runTransaction {
             // Learn more: https://patrykandpatrick.com/eji9zq.
             columnSeries { series(5, 6, 5, 2, 11, 8, 5, 2, 15, 11, 8, 13, 12, 10, 2, 7) }

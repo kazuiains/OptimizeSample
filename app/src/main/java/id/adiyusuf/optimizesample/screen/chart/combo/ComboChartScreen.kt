@@ -28,8 +28,6 @@ fun ComboChartScreen() {
         viewModelStoreOwner = context as ComponentActivity
     )
 
-    basicViewModel.changeTitle("Combo")
-
     val scrollState = rememberScrollState()
 
     val modelProducer = remember { CartesianChartModelProducer() }
@@ -46,6 +44,8 @@ fun ComboChartScreen() {
     }
 
     LaunchedEffect(Unit) {
+        basicViewModel.changeTitle("Combo")
+
         modelProducer.runTransaction {
             // Learn more: https://patrykandpatrick.com/eji9zq.
             columnSeries { series(4, 15, 5, 8, 10, 15, 9, 10, 7, 9, 10, 12, 2, 9, 5, 14) }

@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,13 +36,8 @@ fun ChartScreen(
         viewModelStoreOwner = context as ComponentActivity
     )
 
-
     val navController = AppComposition.navigation
     val scrollState = rememberScrollState()
-
-    basicViewModel.changeTitle("Chart")
-    viewModel.changeHeader("Chart in Jetpack Compose")
-    viewModel.changeDescription("tutorial menggunakan library vico untuk membuat chart di compose.")
 
     Column(
         modifier = Modifier
@@ -85,6 +81,12 @@ fun ChartScreen(
         ) {
             Text("Combo (Bar x Line)")
         }
+    }
+
+    LaunchedEffect(Unit) {
+        basicViewModel.changeTitle("Chart")
+        viewModel.changeHeader("Chart in Jetpack Compose")
+        viewModel.changeDescription("tutorial menggunakan library vico untuk membuat chart di compose.")
     }
 }
 
