@@ -16,7 +16,7 @@ import id.adiyusuf.optimizesample.AppComposition
 import id.adiyusuf.optimizesample.BasicSharingViewModel
 
 @Composable
-fun NextScreen() {
+fun SharingViewModelNextScreen() {
     val navController = AppComposition.navigation
     val scrollState = rememberScrollState()
     val basicSharingViewModel: BasicSharingViewModel = hiltViewModel(

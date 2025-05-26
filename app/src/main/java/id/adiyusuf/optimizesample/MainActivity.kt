@@ -50,9 +50,10 @@ import id.adiyusuf.optimizesample.screen.result.viewmodel.ResultVmScreen
 import id.adiyusuf.optimizesample.screen.sharing.SharingScreen
 import id.adiyusuf.optimizesample.screen.sharing.composition.SharingCompositionScreen
 import id.adiyusuf.optimizesample.screen.sharing.event.SharingEventScreen
+import id.adiyusuf.optimizesample.screen.sharing.singleton.SharingSingletonNextScreen
 import id.adiyusuf.optimizesample.screen.sharing.singleton.SharingSingletonScreen
 import id.adiyusuf.optimizesample.screen.sharing.state.SharingStateScreen
-import id.adiyusuf.optimizesample.screen.sharing.viewmodel.NextScreen
+import id.adiyusuf.optimizesample.screen.sharing.viewmodel.SharingViewModelNextScreen
 import id.adiyusuf.optimizesample.screen.sharing.viewmodel.SharingVmScreen
 import id.adiyusuf.optimizesample.ui.theme.OptimizeSampleTheme
 
@@ -173,8 +174,11 @@ fun NavGraphBuilder.sharingNavigation() {
         composable("sharing/viewmodel") {
             SharingVmScreen()
         }
-        composable("sharing/next") {
-            NextScreen()
+        composable("sharing/viewmodel/next") {
+            SharingViewModelNextScreen()
+        }
+        composable("sharing/singleton/next") {
+            SharingSingletonNextScreen()
         }
     }
 }

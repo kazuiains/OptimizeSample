@@ -70,7 +70,7 @@ fun SharingVmScreen(
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                navController.navigate("sharing/next")
+                navController.navigate("sharing/viewmodel/next")
             }
         ) {
             Text("Next Page")
