@@ -1,14 +1,13 @@
 package id.adiyusuf.optimizesample.screen.sharing.composition
 
 import androidx.activity.ComponentActivity
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -24,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import id.adiyusuf.optimizesample.BasicViewModel
 
-val StateStateLocalMessage = staticCompositionLocalOf { mutableStateOf("Pesan Default") }
-val DataLocalMessage = staticCompositionLocalOf<SharingCompositionData?> { null }
-val StateHolderDataLocalMessage = staticCompositionLocalOf<SharingCompositionState?> { null }
+val LocalTextState = staticCompositionLocalOf { mutableStateOf("Pesan Default") }
+val LocalAppData = staticCompositionLocalOf<SharingCompositionData?> { null }
+val LocalToggleState = staticCompositionLocalOf<SharingCompositionState?> { null }
 
 @Composable
 fun SharingCompositionScreen() {
@@ -42,18 +41,15 @@ fun SharingCompositionScreen() {
     val toggleState = rememberSharingCompositionState()
 
     CompositionLocalProvider(
-        StateStateLocalMessage provides textState,
-        DataLocalMessage provides data,
-        StateHolderDataLocalMessage provides toggleState
+        LocalTextState provides textState,
+        LocalAppData provides data,
+        LocalToggleState provides toggleState
     ) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth()
-                .scrollable(
-                    state = scrollState,
-                    orientation = Orientation.Vertical
-                )
+                .verticalScroll(scrollState)
         ) {
             ChildView()
         }
@@ -66,9 +62,9 @@ fun SharingCompositionScreen() {
 
 @Composable
 private fun ChildView() {
-    val textState = StateStateLocalMessage.current
-    val data = DataLocalMessage.current
-    val toggleState = StateHolderDataLocalMessage.current
+    val textState = LocalTextState.current
+    val data = LocalAppData.current
+    val toggleState = LocalToggleState.current
 
     Column {
         Text("temanya adalah ${data?.theme}")
