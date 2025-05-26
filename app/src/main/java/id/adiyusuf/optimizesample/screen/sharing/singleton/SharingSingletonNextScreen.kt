@@ -9,9 +9,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun SharingSingletonNextScreen() {
+fun SharingSingletonNextScreen(
+    viewModel: SharingSingletonNextViewModel = hiltViewModel()
+) {
     val scrollState = rememberScrollState()
 
     Column(
@@ -21,5 +24,6 @@ fun SharingSingletonNextScreen() {
             .verticalScroll(scrollState)
     ) {
         Text("Count: ${CountState.sharedCount.value}")
+        Text("Count viewmodel: ${viewModel.count}")
     }
 }

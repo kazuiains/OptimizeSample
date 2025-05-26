@@ -12,15 +12,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import id.adiyusuf.optimizesample.AppComposition
 import id.adiyusuf.optimizesample.BasicViewModel
 
 @Composable
-fun SharingSingletonScreen() {
+fun SharingSingletonScreen(viewModel: SharingSingletonViewModel = hiltViewModel()) {
     val navController = AppComposition.navigation
 
     val context = LocalContext.current
@@ -29,6 +31,8 @@ fun SharingSingletonScreen() {
     )
 
     val scrollState = rememberScrollState()
+
+    val count by viewModel.count.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -42,7 +46,17 @@ fun SharingSingletonScreen() {
         }
         Spacer(Modifier.height(16.dp))
         SampleCompose()
+
+        Spacer(Modifier.height(32.dp))
+
+        Text("From Compose A from viewmodel - Count: $count")
+        Button(onClick = {viewModel.increment() }) {
+            Text("Increment Viewmodel")
+        }
         Spacer(Modifier.height(16.dp))
+        SampleCompose2()
+
+        Spacer(Modifier.height(32.dp))
 
         Button(
             modifier = Modifier.fillMaxWidth(),
@@ -62,4 +76,12 @@ fun SharingSingletonScreen() {
 @Composable
 private fun SampleCompose() {
     Text("SampleCompose - Count: ${CountState.sharedCount.value}")
+}
+
+@Composable
+private fun SampleCompose2() {
+    val viewModel: SharingSingletonViewModel = hiltViewModel()
+    val count by viewModel.count.collectAsStateWithLifecycle()
+
+    Text("SampleCompose2 from viewmodel - Count: $count")
 }
