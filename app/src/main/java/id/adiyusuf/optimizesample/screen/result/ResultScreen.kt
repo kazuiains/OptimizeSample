@@ -38,9 +38,6 @@ fun ResultScreen(
     val navController = AppComposition.navigation
     val scrollState = rememberScrollState()
 
-    viewModel.changeHeader("Result in Jetpack Compose")
-    viewModel.changeDescription("tutorial mengirim data ke screen sebelumnya.")
-
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -48,6 +45,10 @@ fun ResultScreen(
             .verticalScroll(scrollState)
     ) {
         Header()
+        Spacer(modifier = Modifier.height(16.dp))
+        Text("From: ")
+        Text("value: ")
+        Spacer(modifier = Modifier.height(16.dp))
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
@@ -64,17 +65,11 @@ fun ResultScreen(
         ) {
             Text("State")
         }
-        Button(
-            modifier = Modifier.fillMaxWidth(),
-            onClick = {
-                navController.navigate("result/viewmodel")
-            }
-        ) {
-            Text("ViewModel")
-        }
     }
 
     LaunchedEffect(Unit) {
+        viewModel.changeHeader("Result in Jetpack Compose")
+        viewModel.changeDescription("tutorial mengirim data ke screen sebelumnya.")
         basicViewModel.changeTitle("Result")
     }
 }

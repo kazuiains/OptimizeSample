@@ -43,9 +43,6 @@ fun SharingScreen(
         viewModelStoreOwner = navController.getBackStackEntry("sharing")
     )
 
-    viewModel.changeHeader("Sharing in Jetpack Compose")
-    viewModel.changeDescription("tutorial sharing data antar screen, composable function.")
-
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -99,6 +96,8 @@ fun SharingScreen(
     LaunchedEffect(Unit) {
         basicViewModel.changeTitle("Sharing")
         basicSharingViewModel.changeText("Sharing Ke semua yang ada di navigation sharing")
+        viewModel.changeHeader("Sharing in Jetpack Compose")
+        viewModel.changeDescription("tutorial sharing data antar screen, composable function.")
     }
 }
 
