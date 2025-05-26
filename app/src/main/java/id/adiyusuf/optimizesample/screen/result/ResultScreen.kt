@@ -45,10 +45,6 @@ fun ResultScreen(
             .verticalScroll(scrollState)
     ) {
         Header()
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("From: ")
-        Text("value: ")
-        Spacer(modifier = Modifier.height(16.dp))
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {

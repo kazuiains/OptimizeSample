@@ -45,6 +45,7 @@ import id.adiyusuf.optimizesample.screen.game.SimpleGameCanvasScreen
 import id.adiyusuf.optimizesample.screen.home.HomeScreen
 import id.adiyusuf.optimizesample.screen.result.ResultScreen
 import id.adiyusuf.optimizesample.screen.result.argument.ResultArgumentScreen
+import id.adiyusuf.optimizesample.screen.result.state.ResultStateNextScreen
 import id.adiyusuf.optimizesample.screen.result.state.ResultStateScreen
 import id.adiyusuf.optimizesample.screen.sharing.SharingScreen
 import id.adiyusuf.optimizesample.screen.sharing.composition.SharingCompositionScreen
@@ -192,6 +193,9 @@ fun NavGraphBuilder.resultNavigation() {
         }
         composable("result/state") {
             ResultStateScreen()
+        }
+        composable("result/state/next") {
+            ResultStateNextScreen()
         }
     }
 }
