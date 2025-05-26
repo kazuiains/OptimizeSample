@@ -72,14 +72,6 @@ fun SharingScreen(
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                navController.navigate("sharing/remember")
-            }
-        ) {
-            Text("Remember")
-        }
-        Button(
-            modifier = Modifier.fillMaxWidth(),
-            onClick = {
                 navController.navigate("sharing/singleton")
             }
         ) {
@@ -91,7 +83,7 @@ fun SharingScreen(
                 navController.navigate("sharing/state")
             }
         ) {
-            Text("State")
+            Text("State Hoisting")
         }
         Button(
             modifier = Modifier.fillMaxWidth(),
