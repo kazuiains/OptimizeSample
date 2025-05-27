@@ -50,8 +50,8 @@ import com.patrykandpatrick.vico.core.common.LegendItem
 import com.patrykandpatrick.vico.core.common.Position
 import com.patrykandpatrick.vico.core.common.data.ExtraStore
 import com.patrykandpatrick.vico.core.common.shape.CorneredShape
-import com.patrykandpatrick.vico.sample.compose.PreviewBox
-import com.patrykandpatrick.vico.sample.compose.rememberMarker
+import id.adiyusuf.optimizesample.component.PreviewBox
+import id.adiyusuf.optimizesample.component.rememberMarker
 import kotlinx.coroutines.runBlocking
 
 val AiTestScoresData =

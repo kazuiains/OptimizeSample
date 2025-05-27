@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -39,8 +40,11 @@ fun SharingScreen(
     val navController = AppComposition.navigation
     val scrollState = rememberScrollState()
 
+    val sharingBackStackEntry = remember(navController.currentBackStackEntry) {
+        navController.getBackStackEntry("sharing")
+    }
     val basicSharingViewModel: BasicSharingViewModel = hiltViewModel(
-        viewModelStoreOwner = navController.getBackStackEntry("sharing")
+        viewModelStoreOwner = sharingBackStackEntry
     )
 
     Column(

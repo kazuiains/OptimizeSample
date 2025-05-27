@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.patrykandpatrick.vico.sample.compose
+package id.adiyusuf.optimizesample.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

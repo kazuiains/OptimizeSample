@@ -29,7 +29,7 @@ import com.patrykandpatrick.vico.core.cartesian.axis.HorizontalAxis
 import com.patrykandpatrick.vico.core.cartesian.axis.VerticalAxis
 import com.patrykandpatrick.vico.core.cartesian.data.CartesianChartModelProducer
 import com.patrykandpatrick.vico.core.cartesian.data.lineSeries
-import com.patrykandpatrick.vico.sample.compose.PreviewBox
+import id.adiyusuf.optimizesample.component.PreviewBox
 import kotlinx.coroutines.runBlocking
 
 @Composable

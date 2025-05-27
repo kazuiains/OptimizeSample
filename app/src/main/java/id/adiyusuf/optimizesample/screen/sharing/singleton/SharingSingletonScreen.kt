@@ -40,7 +40,7 @@ fun SharingSingletonScreen(viewModel: SharingSingletonViewModel = hiltViewModel(
             .fillMaxWidth()
             .verticalScroll(scrollState)
     ) {
-        Text("From Compose A - Count: ${CountState.sharedCount.value}")
+        Text("From Compose A - Count: ${CountState.sharedCount.intValue}")
         Button(onClick = { CountState.increment() }) {
             Text("Increment")
         }
@@ -75,7 +75,7 @@ fun SharingSingletonScreen(viewModel: SharingSingletonViewModel = hiltViewModel(
 
 @Composable
 private fun SampleCompose() {
-    Text("SampleCompose - Count: ${CountState.sharedCount.value}")
+    Text("SampleCompose - Count: ${CountState.sharedCount.intValue}")
 }
 
 @Composable

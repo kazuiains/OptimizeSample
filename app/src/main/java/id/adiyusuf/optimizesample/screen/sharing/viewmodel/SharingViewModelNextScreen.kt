@@ -8,6 +8,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -19,8 +20,12 @@ import id.adiyusuf.optimizesample.BasicSharingViewModel
 fun SharingViewModelNextScreen() {
     val navController = AppComposition.navigation
     val scrollState = rememberScrollState()
+
+    val sharingBackStackEntry = remember(navController.currentBackStackEntry) {
+        navController.getBackStackEntry("sharing")
+    }
     val basicSharingViewModel: BasicSharingViewModel = hiltViewModel(
-        viewModelStoreOwner = navController.getBackStackEntry("sharing")
+        viewModelStoreOwner = sharingBackStackEntry
     )
 
     val textNested by basicSharingViewModel.text.collectAsStateWithLifecycle()

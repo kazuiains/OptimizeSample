@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.patrykandpatrick.vico.sample.compose
+package id.adiyusuf.optimizesample.component
 
 import android.text.Layout
 import androidx.compose.material3.MaterialTheme

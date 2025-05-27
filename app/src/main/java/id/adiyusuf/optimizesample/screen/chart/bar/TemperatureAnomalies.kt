@@ -44,8 +44,8 @@ import com.patrykandpatrick.vico.core.cartesian.marker.DefaultCartesianMarker
 import com.patrykandpatrick.vico.core.common.component.LineComponent
 import com.patrykandpatrick.vico.core.common.data.ExtraStore
 import com.patrykandpatrick.vico.core.common.shape.CorneredShape
-import com.patrykandpatrick.vico.sample.compose.PreviewBox
-import com.patrykandpatrick.vico.sample.compose.rememberMarker
+import id.adiyusuf.optimizesample.component.PreviewBox
+import id.adiyusuf.optimizesample.component.rememberMarker
 import kotlinx.coroutines.runBlocking
 import java.text.DecimalFormat
 import kotlin.math.abs

@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -34,13 +35,20 @@ fun SharingVmScreen(
         viewModelStoreOwner = context as ComponentActivity
     )
 
-    val sharingViewModel: SharingViewModel =
-        hiltViewModel(viewModelStoreOwner = navController.getBackStackEntry("sharing/main"))
+    val backStackEntry = remember(navController.currentBackStackEntry) {
+        navController.getBackStackEntry("sharing/main")
+    }
+    val sharingViewModel: SharingViewModel = hiltViewModel(
+        viewModelStoreOwner = backStackEntry
+    )
 
     val scrollState = rememberScrollState()
 
+    val sharingBackStackEntry = remember(navController.currentBackStackEntry) {
+        navController.getBackStackEntry("sharing")
+    }
     val basicSharingViewModel: BasicSharingViewModel = hiltViewModel(
-        viewModelStoreOwner = navController.getBackStackEntry("sharing")
+        viewModelStoreOwner = sharingBackStackEntry
     )
 
     val text by basicViewModel.sharingActivity.collectAsStateWithLifecycle()

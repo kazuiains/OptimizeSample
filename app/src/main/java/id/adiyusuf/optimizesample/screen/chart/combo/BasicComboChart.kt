@@ -37,7 +37,7 @@ import com.patrykandpatrick.vico.core.cartesian.data.columnSeries
 import com.patrykandpatrick.vico.core.cartesian.data.lineSeries
 import com.patrykandpatrick.vico.core.cartesian.layer.ColumnCartesianLayer
 import com.patrykandpatrick.vico.core.cartesian.layer.LineCartesianLayer
-import com.patrykandpatrick.vico.sample.compose.PreviewBox
+import id.adiyusuf.optimizesample.component.PreviewBox
 import kotlinx.coroutines.runBlocking
 
 @Composable

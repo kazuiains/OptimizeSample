@@ -23,7 +23,7 @@ fun SharingSingletonNextScreen(
             .fillMaxWidth()
             .verticalScroll(scrollState)
     ) {
-        Text("Count: ${CountState.sharedCount.value}")
+        Text("Count: ${CountState.sharedCount.intValue}")
         Text("Count viewmodel: ${viewModel.count}")
     }
 }
