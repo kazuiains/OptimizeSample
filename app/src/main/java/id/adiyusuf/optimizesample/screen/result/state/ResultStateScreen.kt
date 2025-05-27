@@ -1,5 +1,6 @@
 package id.adiyusuf.optimizesample.screen.result.state
 
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,13 +11,17 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import id.adiyusuf.optimizesample.AppComposition
+import id.adiyusuf.optimizesample.BasicViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,6 +31,10 @@ import kotlinx.coroutines.flow.stateIn
 @Composable
 fun ResultStateScreen() {
     val navController = AppComposition.navigation
+    val context = LocalContext.current
+    val basicViewModel: BasicViewModel = hiltViewModel(
+        viewModelStoreOwner = context as ComponentActivity
+    )
     val scrollState = rememberScrollState()
     val navBackStackEntry = navController.currentBackStackEntry
     val savedStateHandle = navBackStackEntry?.savedStateHandle
@@ -64,5 +73,9 @@ fun ResultStateScreen() {
         ) {
             Text("Next Page")
         }
+    }
+
+    LaunchedEffect(Unit) {
+        basicViewModel.changeTitle("Saved State Handle")
     }
 }
