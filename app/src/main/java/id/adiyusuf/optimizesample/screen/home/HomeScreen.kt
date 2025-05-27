@@ -57,14 +57,6 @@ fun HomeScreen() {
         ) {
             Text("Chart")
         }
-        Button(
-            modifier = Modifier.fillMaxWidth(),
-            onClick = {
-                navController.navigate("game")
-            }
-        ) {
-            Text("Game")
-        }
     }
 
     LaunchedEffect(Unit) {

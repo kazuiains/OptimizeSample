@@ -41,7 +41,6 @@ import id.adiyusuf.optimizesample.screen.chart.bar.BarChartScreen
 import id.adiyusuf.optimizesample.screen.chart.candlestick.CandlestickChartScreen
 import id.adiyusuf.optimizesample.screen.chart.combo.ComboChartScreen
 import id.adiyusuf.optimizesample.screen.chart.line.LineChartScreen
-import id.adiyusuf.optimizesample.screen.game.SimpleGameCanvasScreen
 import id.adiyusuf.optimizesample.screen.home.HomeScreen
 import id.adiyusuf.optimizesample.screen.result.ResultScreen
 import id.adiyusuf.optimizesample.screen.result.argument.ResultArgumentScreen
@@ -111,10 +110,6 @@ class MainActivity : ComponentActivity() {
                         ) {
                             composable(route = "home") {
                                 HomeScreen()
-                            }
-
-                            composable(route = "game") {
-                                SimpleGameCanvasScreen()
                             }
 
                             sharingNavigation()
